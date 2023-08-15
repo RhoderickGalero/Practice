@@ -4,7 +4,8 @@ async function main() {
   const token = process.env.PERSONAL_ACCESS_TOKEN;
   const octokit = new Octokit({ auth: token });
 
-  const issueNumber = process.env.GITHUB_EVENT.issue.number;
+  const issueNumber = const issueNumber = JSON.parse(process.env.GITHUB_EVENT).issue.number;
+
 
   try {
     await octokit.issues.update({
