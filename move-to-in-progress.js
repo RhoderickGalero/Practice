@@ -1,7 +1,8 @@
-const { getOctokit } = require('@actions/github');
+const { Octokit } = require('@actions/github');
 
 async function main() {
-  const octokit = getOctokit(process.env.PERSONAL_ACCESS_TOKEN);
+  const token = process.env.PERSONAL_ACCESS_TOKEN;
+  const octokit = new Octokit({ auth: `token ${token}` });
 
   const issueNumber = process.env.GITHUB_EVENT_PATH
     ? JSON.parse(require('fs').readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')).issue.number
