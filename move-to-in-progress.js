@@ -1,4 +1,4 @@
-const { Octokit } = require('@actions/github');
+const { Octokit } = require('@octokit/rest');
 
 async function main() {
   const token = process.env.PERSONAL_ACCESS_TOKEN;
