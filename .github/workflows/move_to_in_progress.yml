@@ -20,9 +20,9 @@ jobs:
           node-version: '16'
 
       - name: Install Dependencies
-        run: npm install @octokit/rest
+        run: npm install @actions/core octokit/rest.js
 
       - name: Move Issue to In Progress
-        run: node move-to-in-progress.js
+        run: node .github/move-to-in-progress.js
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
