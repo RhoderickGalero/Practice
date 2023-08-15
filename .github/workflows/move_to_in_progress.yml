@@ -29,6 +29,5 @@ jobs:
         run: |
           npm install @octokit/rest
           node move-to-in-progress.js
-        
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
