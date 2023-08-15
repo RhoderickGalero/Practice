@@ -1,8 +1,12 @@
 const { Octokit } = require('@octokit/rest');
+const fetch = require('node-fetch');
 
 async function main() {
   const token = process.env.PERSONAL_ACCESS_TOKEN;
-  const octokit = new Octokit({ auth: `token ${token}` });
+  const octokit = new Octokit({
+    auth: `token ${token}`,
+    request: { fetch },
+  });
 
   const issueNumber = process.env.GITHUB_EVENT_PATH
     ? JSON.parse(require('fs').readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')).issue.number
