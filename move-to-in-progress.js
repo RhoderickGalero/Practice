@@ -1,4 +1,4 @@
-const axios = require('axios'); // Use axios instead of node-fetch
+const axios = require('axios');
 const { Octokit } = require('@octokit/rest');
 
 async function main() {
@@ -17,9 +17,17 @@ async function main() {
   });
 
   try {
-    // Rest of your script
+    const response = await octokit.issues.update({
+      owner: process.env.GITHUB_REPOSITORY.split('/')[0],
+      repo: process.env.GITHUB_REPOSITORY.split('/')[1],
+      issue_number: issueNumber,
+      labels: ['In Progress']
+    });
+
+    console.log('Response:', response.data);
+    console.log(`Issue #${issueNumber} moved to In Progress`);
   } catch (error) {
-    // Rest of your script
+    console.error('Error:', error.message);
   }
 }
 
