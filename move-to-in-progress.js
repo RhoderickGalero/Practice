@@ -1,3 +1,4 @@
+const fetch = require('node-fetch'); // Add this line issue #25
 const { Octokit } = require('@octokit/rest');
 
 async function main() {
