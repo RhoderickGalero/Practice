@@ -11,19 +11,15 @@ async function main() {
 
   const octokit = new Octokit({
     auth: `token ${token}`,
+    request: {
+      fetch: axios
+    }
   });
 
   try {
-    await octokit.issues.update({
-      owner: process.env.GITHUB_REPOSITORY.split('/')[0],
-      repo: process.env.GITHUB_REPOSITORY.split('/')[1],
-      issue_number: issueNumber,
-      labels: ['In Progress']
-    });
-
-    console.log(`Issue #${issueNumber} moved to In Progress`);
+    // Rest of your script
   } catch (error) {
-    console.error('Error:', error.message);
+    // Rest of your script
   }
 }
 
