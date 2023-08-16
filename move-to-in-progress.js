@@ -24,6 +24,7 @@ async function main() {
       labels: ['In Progress']
     });
 
+    console.log('Response Headers:', response.headers);
     console.log('Response:', response.data);
     console.log(`Issue #${issueNumber} moved to In Progress`);
   } catch (error) {
