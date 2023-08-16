@@ -5,7 +5,8 @@ async function main() {
   console.log('Token:', token); // Add this line to print the token
   const octokit = new Octokit({ auth: `token ${token}` });
 
-  const issueNumber = process.env.GITHUB_EVENT.issue.number;
+  const eventData = JSON.parse(process.env.GITHUB_EVENT);
+  const issueNumber = eventData.issue.number;
   console.log('Issue Number:', issueNumber); // Add this line to print the issue number
 
   try {
