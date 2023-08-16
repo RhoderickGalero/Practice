@@ -1,9 +1,4 @@
-// Replace the following line:
-// const fetch = require('node-fetch'); // Add this line issue #25
-
-/ Use dynamic import instead:
-const fetchModule = await import('node-fetch');
-const fetch = fetchModule.default;
+const axios = require('axios'); // Use axios instead of node-fetch
 const { Octokit } = require('@octokit/rest');
 
 async function main() {
@@ -16,9 +11,6 @@ async function main() {
 
   const octokit = new Octokit({
     auth: `token ${token}`,
-    request: {
-      fetch: require('node-fetch') // Provide the fetch implementation
-    }
   });
 
   try {
