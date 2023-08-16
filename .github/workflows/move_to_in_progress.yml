@@ -18,7 +18,7 @@ jobs:
           node-version: '16'
 
       - name: Install Dependencies
-        run: npm install @octokit/rest @actions/github
+        run: npm install @octokit/rest @actions/github @octokit/request
 
       - name: Move Issue to In Progress
         run: node move-to-in-progress.js
