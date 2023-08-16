@@ -1,4 +1,9 @@
-const fetch = require('node-fetch'); // Add this line issue #25
+// Replace the following line:
+// const fetch = require('node-fetch'); // Add this line issue #25
+
+/ Use dynamic import instead:
+const fetchModule = await import('node-fetch');
+const fetch = fetchModule.default;
 const { Octokit } = require('@octokit/rest');
 
 async function main() {
