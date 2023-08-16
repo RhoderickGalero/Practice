@@ -18,7 +18,7 @@ jobs:
           node-version: '16'
 
       - name: Install Dependencies
-        run: npm install node-fetch @octokit/rest
+        run: npm install axios
 
       - name: Move Issue to In Progress
         run: node move-to-in-progress.js
