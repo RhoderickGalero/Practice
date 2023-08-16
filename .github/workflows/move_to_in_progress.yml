@@ -24,3 +24,4 @@ jobs:
         run: node move-to-in-progress.js
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.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 }}
+          GITHUB_EVENT: ${{ toJson(github.event) }} # Pass the GitHub event payload
