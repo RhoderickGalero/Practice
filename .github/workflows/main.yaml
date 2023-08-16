@@ -24,4 +24,4 @@ jobs:
     - name: Run Script
       run: node github-script.js
       env:
-        YOUR_PAT_VARIABLE: ${{ PERSONAL_ACCESS_TOKEN }}
+        YOUR_PAT_VARIABLE: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
