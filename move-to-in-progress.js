@@ -1,4 +1,4 @@
-const { request } = require('@octokit/request');
+const { Octokit } = require('@octokit/rest');
 
 async function main() {
   const token = process.env.PERSONAL_ACCESS_TOKEN;
@@ -8,14 +8,18 @@ async function main() {
   const issueNumber = eventData.issue.number;
   console.log('Issue Number:', issueNumber);
 
-  const octokit = request.defaults({
-    headers: {
-      authorization: `token ${token}`
+  const octokit = new Octokit({
+    auth: `token ${token}`,
+    request: {
+      fetch: require('node-fetch') // Provide the fetch implementation
     }
   });
 
   try {
-    await octokit.patch(`/repos/${process.env.GITHUB_REPOSITORY}/issues/${issueNumber}`, {
+    await octokit.issues.update({
+      owner: process.env.GITHUB_REPOSITORY.split('/')[0],
+      repo: process.env.GITHUB_REPOSITORY.split('/')[1],
+      issue_number: issueNumber,
       labels: ['In Progress']
     });
 
