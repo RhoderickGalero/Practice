@@ -23,5 +23,5 @@ jobs:
       - name: Move Issue to In Progress
         run: node move-to-in-progress.js
         env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.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 }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.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 }}
           GITHUB_EVENT: ${{ toJson(github.event) }} # Pass the GitHub event payload
