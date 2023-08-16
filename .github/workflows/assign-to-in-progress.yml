@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.3
         with:
-          project: RhoderickGalero/Projects/RhoderickGalero's Practice
+          project: RhoderickGalero/Practice
           column: In Progress
           repo-token: ${{ secrets.GITHUB_TOKEN }}
