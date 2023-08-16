@@ -23,4 +23,4 @@ jobs:
       - name: Move Issue to In Progress
         run: node move-to-in-progress.js
         env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.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 }}
