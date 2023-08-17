@@ -1,4 +1,4 @@
-name: Move assigned pull requests into To do
+- name: GitHub Project Automation+
 
 on:
   issues:
