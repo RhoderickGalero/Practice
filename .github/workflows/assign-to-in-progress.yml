@@ -12,4 +12,4 @@ jobs:
         with:
           project: RhoderickGalero's Practice
           column: In Progress
-          repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
