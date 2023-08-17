@@ -11,5 +11,5 @@ jobs:
       - uses: alex-page/github-project-automation-plus@v0.8.3
         with:
           project: RhoderickGalero
-          column: In Progress
+          column: InProgress
           repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
