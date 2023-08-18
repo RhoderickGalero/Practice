@@ -4,7 +4,7 @@ import json
 
 def get_assigned_issues():
 #     command = "gh issue list --json number,title,state,assignees"
-    command = "gh project item-list --json number,title,state,assignees"
+    command = "gh project item-list --format {json} number,title,state,assignees"
     result = subprocess.run(command, stdout=subprocess.PIPE, shell=True, text=True)
     output = result.stdout.strip()
     issues = json.loads(output)
