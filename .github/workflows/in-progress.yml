@@ -19,5 +19,4 @@ jobs:
           echo "Hello, World!"
           gh --version
           gh issue list
-//          echo `gh project item-list`
           
