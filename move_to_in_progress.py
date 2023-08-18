@@ -11,7 +11,7 @@ def get_assigned_issues():
     return assigned_issues
 
 def move_to_in_progress(issue_number):
-    command = f"gh issue edit {issue_number} --add-label 'In Progress' --remove-label 'Todo'"
+    command = f"gh issue edit {issue_number} --add-label 'InProgress' --remove-label 'Todo'"
     subprocess.run(command, shell=True)
 
 def main():
