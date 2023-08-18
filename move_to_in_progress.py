@@ -3,11 +3,11 @@ import subprocess
 import json
 
 def get_assigned_issues():
-    command = "gh issue list --json number,title,state,assignee"
+    command = "gh issue list --json number,title,state,assignees"
     result = subprocess.run(command, stdout=subprocess.PIPE, shell=True, text=True)
     output = result.stdout.strip()
     issues = json.loads(output)
-    assigned_issues = [issue for issue in issues if issue["assignee"] is not None]
+    assigned_issues = [issue for issue in issues if issue["assignees"] is not None]
     return assigned_issues
 
 def move_to_in_progress(issue_number):
