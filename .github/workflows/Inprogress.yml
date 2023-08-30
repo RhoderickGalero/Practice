@@ -1,25 +1,16 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# GitHub recommends pinning actions to a commit SHA.
-# To get a newer version, you will need to update the SHA.
-# You can also reference a tag or branch, but the action may change without warning.
 name: Add PR to project
-# This workflow runs whenever a pull request in the repository is marked as "ready for review".
+
 on: [push]
 
 jobs:
-  MoveToinInProgress:
+  move_to_in_progress:
     runs-on: ubuntu-latest
     
     steps:
       - name: Get project data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          ORGANIZATION: YOUR_ORGANIZATION
           PROJECT_NUMBER: 6
-        # Uses [GitHub CLI](https://cli.github.com/manual/) to query the API for the ID of the project and return the name and ID of the first 20 fields in the project. `fields` returns a union and the query uses inline fragments (`... on`) to return information about any `ProjectV2Field` and `ProjectV2SingleSelectField` fields. The response is stored in a file called `project_data.json`.
         run: |
           gh api graphql -f query='
             query
