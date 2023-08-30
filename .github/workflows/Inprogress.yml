@@ -19,8 +19,8 @@ jobs:
         run: |
          query='
           {
-            organization(login: "ORG_LOGIN") 
-            { projectsV2(number: 6) {
+            organization(login: "") 
+            {projectsV2(number: 6) {
                 edges { 
                   node {
                     id
