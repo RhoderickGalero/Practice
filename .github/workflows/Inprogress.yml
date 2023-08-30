@@ -12,29 +12,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT_NUMBER: 6
         run: |
-          query='
-          {
-            "query": "
-            {
-              repository(owner: "RhoderickGalero", name: "Practice") {
-                projects(first: 10) {
-                  nodes {
-                  id
-                  name
-                  columns(first: 10) {
-                    nodes {
-                      id
-                      name
-                      cards(first: 10) {
-                        nodes {
-                          id
-                          note
-                      }
-                    }
-                  }
-                }
-              }
+          gh api graphql -f query='
+            query{
+              projectV2(number: NUMBER) {
+                id
             }
-          }
-          }"
-          }' > project_data.json
+          }'
+            
