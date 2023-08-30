@@ -12,10 +12,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT_NUMBER: 6
         run: |
-          gh api graphql -f query='
-            query{
+          query MyQuery {
+            viewer {
               projectV2(number: 6) {
                 id
+              }
             }
-          }'
+          }
             
