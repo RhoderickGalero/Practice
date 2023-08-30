@@ -1,7 +1,7 @@
 import requests
 
 # Replace with your GitHub Personal Access Token and repository details
-ACCESS_TOKEN = "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"
+ACCESS_TOKEN = "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"
 REPO_OWNER = "RhoderickGalero"
 REPO_NAME = "Practice"
 
