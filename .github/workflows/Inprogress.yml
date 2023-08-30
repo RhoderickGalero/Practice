@@ -1,43 +1,31 @@
-name: Add PR to project
-
+name: Log latest release
 on:
   push:
     branches:
       - main
 
 jobs:
-  move_to_in_progress:
+  logLatestRelease:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: octokit/graphql-action@v2.x
+        id: get_latest_release
         with:
-          python-version: 3.x
-      
-      - name: Install requests library
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-      
-      - name: Run script to add PR to project
+          query: |
+            query release($owner:String!,$repo:String!) {
+              repository(owner:$owner,name:$repo) {
+                releases(first:1) {
+                  nodes {
+                    name
+                    createdAt
+                    tagName
+                    description
+                  }
+                }
+              }
+            }
+          owner: ${{ github.event.repository.owner.name }}
+          repo: ${{ github.event.repository.name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          project_number = 6
-          url = "https://api.github.com/graphql"
-          headers = {
-            "Authorization": f"Bearer {GITHUB_TOKEN}"
-          }
-          query = f"""
-            {{
-              projectV2(number: {project_number}) {{
-                id
-              }}
-            }}
-          """
-          response = requests.post(url, json={"query": query}, headers=headers)
-          print(response.json())
+      - run: "echo 'latest release: ${{ steps.get_latest_release.outputs.data }}'"
