@@ -12,11 +12,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT_NUMBER: 6
         run: |
-          query {
-            viewer {
+          url = "https://api.github.com/graphql"
+          headers = {
+          "Authorization": f"Bearer {GITHUB_TOKEN}"
+          }
+          query = """
+            {
               projectV2(number: 6) {
                 id
               }
             }
           }
-            
+          """
+          response = requests.post(url, json={"query": query}, headers=headers)
+          echo "$response"
