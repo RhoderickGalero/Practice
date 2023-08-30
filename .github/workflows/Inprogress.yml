@@ -13,8 +13,7 @@ jobs:
           PROJECT_NUMBER: 6
         run: |
           gh api graphql -f query='
-            query($org: String!, $number: Int!) {
-              organization(login: $org){
+            query
                 projectV2(number: $number) {
                   id
                   fields(first:20) {
@@ -35,4 +34,4 @@ jobs:
                   }
                 }
               }
-            }' -f org=$ORGANIZATION -F number=$PROJECT_NUMBER > project_data.json
+            }' -F number=$PROJECT_NUMBER > project_data.json
