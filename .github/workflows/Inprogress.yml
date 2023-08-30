@@ -13,11 +13,11 @@ jobs:
           PROJECT_NUMBER: 6
         run: |
           query='
-        {
-          repository(owner: "RhoderickGalero", name: "Practice") {
-            id
-            name
-            description
-            stargazerCount
-          }
-        }'
+          {
+            repository(owner: "RhoderickGalero", name: "Practice") {
+              id
+              name
+              description
+              stargazerCount
+            }
+          }'
