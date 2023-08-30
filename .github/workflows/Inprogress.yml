@@ -21,3 +21,5 @@ jobs:
               stargazerCount
             }
           }'
+          response=$(curl -H "Authorization: Bearer $PERSONAL_ACCESS_TOKEN" -X POST -d "{'query':'$query'}" https://api.github.com/graphql)
+          echo "$response"
