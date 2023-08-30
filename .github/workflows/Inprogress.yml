@@ -20,11 +20,12 @@ jobs:
           query='{
            viewer {
              organization(login: "RhoderickGalero") {
+               id
+              }
               projectV2(number: 6) {
                id 
                 }
               }
-            }
-          }'
+            }'
           response=$(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query="$query" | jq '.')
           echo "$response"
