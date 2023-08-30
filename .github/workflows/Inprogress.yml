@@ -37,4 +37,4 @@ jobs:
             }
           }
           }"
-          }' > project_data.json
+          }' > .github/workflows/project_data.json
