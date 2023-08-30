@@ -14,23 +14,25 @@ jobs:
         run: |
           gh api graphql -f query='
             query {
-              projectV2(number: $PROJECT_NUMBER) {
-                id
-                fields(first: 20) {
-                  nodes {
-                    ... on ProjectV2Field {
-                      id
-                      name
-                    }
-                    ... on ProjectV2SingleSelectField {
-                      id
-                      name
-                      options {
+              repository(owner: "owner_name", name: "repo_name") {
+                project(number: $PROJECT_NUMBER) {
+                  id
+                  fields(first: 20) {
+                    nodes {
+                      ... on ProjectField {
                         id
                         name
+                      }
+                      ... on ProjectSingleSelectField {
+                        id
+                        name
+                        options {
+                          id
+                          name
+                        }
                       }
                     }
                   }
                 }
               }
-            }' > project_data.json
+            }' > project_data.json 
