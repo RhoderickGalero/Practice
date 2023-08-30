@@ -21,11 +21,7 @@ jobs:
           {
             organization(login: "") 
             {projectV2(number: 6) {
-                edges { 
-                  node {
-                    id
-                  } 
-                }
+                id 
               }
             }
           }'
