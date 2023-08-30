@@ -1,7 +1,7 @@
 import requests
 
 # Replace with your GitHub Personal Access Token and repository details
-ACCESS_TOKEN = "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"
+ACCESS_TOKEN = "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"
 REPO_OWNER = "RhoderickGalero"
 REPO_NAME = "Practice"
 
@@ -29,7 +29,9 @@ def get_repository_issues():
 
     if response.status_code == 200:
         data = response.json()
+        print(data)
         issues = data["data"]["repository"]["issues"]["nodes"]
+        print (issues)
         return issues
     else:
         print("Failed to retrieve issues:", response.text)
