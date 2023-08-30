@@ -17,10 +17,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ORG_LOGIN=$(echo "${GITHUB_REPOSITORY}" | cut -d / -f 1)
           query='{
            viewer {
-             organization(login: "'"$ORG_LOGIN"'") {
+             organization(login: "RhoderickGalero") {
               projectV2(number: 6) {
                id 
                 }
