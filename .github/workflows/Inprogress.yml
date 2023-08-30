@@ -20,7 +20,7 @@ jobs:
          query='
           {
             organization(login: "") 
-            {projectsV2(number: 6) {
+            {projectV2(number: 6) {
                 edges { 
                   node {
                     id
