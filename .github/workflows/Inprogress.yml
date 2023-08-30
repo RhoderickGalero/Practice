@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Print In Progress
         run: |
@@ -29,5 +29,6 @@ jobs:
               }
             }
           }"
+          }'
           response=$(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query="$query" | jq '.')
           echo "$response"
