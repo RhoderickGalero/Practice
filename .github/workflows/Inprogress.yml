@@ -17,16 +17,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          query='
+         query='
           {
-            "query": "
-            {
-              organization(login: \\"\") 
-              { projectsV2(number: 6) {
-                  id
+            organization(login: "ORG_LOGIN") 
+            { projectsV2(number: 6) {
+                edges { 
+                  node {
+                    id
                   } 
                 }
-            }"
+              }
+            }
           }'
           response=$(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query="$query" | jq '.')
           echo "$response"
