@@ -7,22 +7,38 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      
+      - name: Install requests library
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          
       - name: Get project data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT_NUMBER: 6
+        
         run: |
+          import requests
+
+          project_number = 6
           url = "https://api.github.com/graphql"
           headers = {
-          "Authorization": f"Bearer {GITHUB_TOKEN}"
+            "Authorization": f"Bearer {GITHUB_TOKEN}"
           }
-          query = """
-            {
-              projectV2(number: 6) {
+          query = f"""
+            {{
+              projectV2(number: {project_number}) {{
                 id
-              }
-            }
-          }
+              }}
+            }}
           """
           response = requests.post(url, json={"query": query}, headers=headers)
-          echo "$response"
+          print(response.json())
