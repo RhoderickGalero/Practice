@@ -13,26 +13,29 @@ jobs:
           PROJECT_NUMBER: 6
         run: |
           gh api graphql -f query='
-            query {
-              repository(owner: "owner_name", name: "repo_name") {
-                project(number: $PROJECT_NUMBER) {
-                  id
-                  fields(first: 20) {
-                    nodes {
-                      ... on ProjectField {
-                        id
-                        name
-                      }
-                      ... on ProjectSingleSelectField {
-                        id
-                        name
-                        options {
-                          id
-                          name
+            query 
+             repository(owner: "RhoderickGalero", name: "Practice") {
+                projectV2(number: 6) {
+                id
+                items(first: 10) {
+                    edges {
+                        node {
+                            id
+                            content {
+                                ... on Issue {
+                                    id
+                                    assignees(first: 10) {
+                                        edges {
+                                            node {
+                                                id
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                      }
                     }
-                  }
                 }
-              }
-            }' > project_data.json 
+            }
+          }
+        }' > project_data.json 
