@@ -25,12 +25,12 @@ jobs:
     #    with:
     #     app_id: ${{ secrets.APP_ID }}
     #      private_key: ${{ secrets.APP_PEM }}
-      # Sets environment variables for this step.
-      #
-      # Replace `YOUR_ORGANIZATION` with the name of your organization. For example, `octo-org`.
-      # Replace `YOUR_PROJECT_NUMBER` with your project number. To find the project number, look at the project URL. For example, `https://github.com/orgs/octo-org/projects/5` has a project number of 5.
-      - name: Get project data
-        env:
+    # Sets environment variables for this step.
+    #
+    # Replace `YOUR_ORGANIZATION` with the name of your organization. For example, `octo-org`.
+    # Replace `YOUR_PROJECT_NUMBER` with your project number. To find the project number, look at the project URL. For example, `https://github.com/orgs/octo-org/projects/5` has a project number of 5.
+       - name: Get project data
+         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #          ORGANIZATION: YOUR_ORGANIZATION
           PROJECT_NUMBER: 6
