@@ -38,5 +38,5 @@ jobs:
           }
           }"
           }'
-        response=$(curl -H "Authorization: Bearer $PERSONAL_ACCESS_TOKEN" -X POST -d "$query" https://api.github.com/graphql)
-
+          response=$(curl -H "Authorization: Bearer $GITHUB_TOKEN" -X POST -d "$query" https://api.github.com/graphql)
+          echo "$response"
