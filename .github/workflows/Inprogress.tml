@@ -7,10 +7,8 @@
 # You can also reference a tag or branch, but the action may change without warning.
 name: Add PR to project
 # This workflow runs whenever a pull request in the repository is marked as "ready for review".
-on:
-  issue:
-    types:
-      - assigned
+on: [push]
+
 jobs:
   MoveToinInProgress:
     runs-on: ubuntu-latest
