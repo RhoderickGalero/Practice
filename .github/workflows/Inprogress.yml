@@ -1,31 +1,31 @@
-name: Log latest release
-on:
-  push:
-    branches:
-      - main
+name: Print In Progress World
+
+on: [push]
 
 jobs:
-  logLatestRelease:
+  In_Progress_job:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: octokit/graphql-action@v2.x
-        id: get_latest_release
-        with:
-          query: |
-            query release($owner:String!,$repo:String!) {
-              repository(owner:$owner,name:$repo) {
-                releases(first:1) {
-                  nodes {
-                    name
-                    createdAt
-                    tagName
-                    description
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Print Hello World
+        run: |
+             query='
+             {
+               "query": "
+               {
+               organization(login: "") 
+                 { projectsV2(first: 100) {
+                   edges { 
+                     node {
+                       id 
+                       } 
+                      }
+                    }
                   }
                 }
-              }
-            }
-          owner: ${{ github.event.repository.owner.name }}
-          repo: ${{ github.event.repository.name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo 'latest release: ${{ steps.get_latest_release.outputs.data }}'"
+              }"
+              $response = $(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query=$query | ConvertFrom-Json)
+              echo $reponse
