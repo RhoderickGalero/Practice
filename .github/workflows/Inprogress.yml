@@ -14,7 +14,7 @@ jobs:
         run: |
           gh api graphql -f query='
             query
-                projectV2(number: $number) {
+                projectV2(number: 6) {
                   id
                   fields(first:20) {
                     nodes {
@@ -34,4 +34,4 @@ jobs:
                   }
                 }
               }
-            }' -F number=$PROJECT_NUMBER > project_data.json
+            }'  > project_data.json
