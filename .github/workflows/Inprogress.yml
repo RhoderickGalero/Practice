@@ -19,10 +19,9 @@ jobs:
         run: |
          query='
           {
-            {projectV2(number: 6) {
+            projectV2(number: 6) {
                id 
               }
-            }
           }'
           response=$(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query="$query" | jq '.')
           echo "$response"
