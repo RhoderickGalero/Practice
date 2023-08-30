@@ -1,6 +1,9 @@
 name: Print In Progress World
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   In_Progress_job:
@@ -8,24 +11,23 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Print Hello World
+      - name: Print In Progress
         run: |
-             query='
-             {
-               "query": "
-               {
-               organization(login: "") 
-                 { projectsV2(first: 100) {
-                   edges { 
-                     node {
-                       id 
-                       } 
-                      }
-                    }
-                  }
+          query='
+          {
+            "query": "
+            {
+              organization(login: \\"\") 
+              { projectsV2(first: 100) {
+                edges { 
+                  node {
+                    id 
+                  } 
                 }
-              }"
-              $response = $(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query=$query | ConvertFrom-Json)
-              echo $reponse
+              }
+            }
+          }"
+          response=$(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query="$query" | jq '.')
+          echo "$response"
