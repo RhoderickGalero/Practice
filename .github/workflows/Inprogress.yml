@@ -14,26 +14,29 @@ jobs:
         run: |
           query='
           {
-          repository(owner: "RhoderickGalero", name: "Practice") {
-            projects(first: 10) {
-              nodes {
-                id
-                name
-                columns(first: 10) {
+            "query": "
+            {
+              repository(owner: "RhoderickGalero", name: "Practice") {
+                projects(first: 10) {
                   nodes {
-                    id
-                    name
-                    cards(first: 10) {
-                      nodes {
-                        id
-                        note
-                        }
+                  id
+                  name
+                  columns(first: 10) {
+                    nodes {
+                      id
+                      name
+                      cards(first: 10) {
+                        nodes {
+                          id
+                          note
                       }
                     }
                   }
                 }
               }
             }
+          }
+          }"
           }'
-          response=$(curl -H "Authorization: Bearer $GITHUB_TOKEN" -X POST -d "{'query':'$query'}" https://api.github.com/graphql)
-          echo "$response"
+        response=$(curl -H "Authorization: Bearer $PERSONAL_ACCESS_TOKEN" -X POST -d "$query" https://api.github.com/graphql)
+
