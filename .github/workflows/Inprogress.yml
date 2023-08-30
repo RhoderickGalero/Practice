@@ -37,6 +37,4 @@ jobs:
             }
           }
           }"
-          }'
-          response=$(curl -H "Authorization: Bearer $GITHUB_TOKEN" -X POST -d "$query" https://api.github.com/graphql)
-          echo "$response"
+          }' > project_data.json
