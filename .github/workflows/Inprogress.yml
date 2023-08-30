@@ -13,26 +13,24 @@ jobs:
           PROJECT_NUMBER: 6
         run: |
           gh api graphql -f query='
-            query
-            {
-                projectV2(number:6) {
-                  id
-                  fields(first:20) {
-                    nodes {
-                      ... on ProjectV2Field {
+            query {
+              projectV2(number: $PROJECT_NUMBER) {
+                id
+                fields(first: 20) {
+                  nodes {
+                    ... on ProjectV2Field {
+                      id
+                      name
+                    }
+                    ... on ProjectV2SingleSelectField {
+                      id
+                      name
+                      options {
                         id
                         name
-                      }
-                      ... on ProjectV2SingleSelectField {
-                        id
-                        name
-                        options {
-                          id
-                          name
-                        }
                       }
                     }
                   }
                 }
               }
-            }'  > project_data.json
+            }' > project_data.json
