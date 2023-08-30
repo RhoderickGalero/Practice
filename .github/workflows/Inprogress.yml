@@ -20,7 +20,7 @@ jobs:
          query='
           {
             {projectV2(number: 6) {
-                id 
+               id 
               }
             }
           }'
