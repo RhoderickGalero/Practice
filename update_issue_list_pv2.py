@@ -1,7 +1,7 @@
 import requests
 
 # Replace with your GitHub Personal Access Token and repository details
-ACCESS_TOKEN = "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"
+ACCESS_TOKEN = "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"
 REPO_OWNER = "RhoderickGalero"
 REPO_NAME = "Practice"
 
@@ -12,38 +12,24 @@ def get_repository_issues():
     }
 
     query = """
-mutation (
-          $project: PVT_kwHOBbg8Ns4AT02a!
-          $item: PVTI_lAHOBbg8Ns4AT02azgIj6xo!
-          $status_field: PVTSSF_lAHOBbg8Ns4AT02azgMqiD8!
-          $status_value: 47fc9ee4!
+    mutation UpdateProjectItemField {
+        updateProjectV2ItemFieldValue(input: (
+            input: {projectId: "PVT_kwHOBbg8Ns4AT02a", itemId: "PVTI_lAHOBbg8Ns4AT02azgIj6xo", fieldId: "PVTSSF_lAHOBbg8Ns4AT02azgMqiD8", value: {singleSelectOptionId: "47fc9ee4"}, clientMutationId: ""}
         ) {
-          set_status: updateProjectV2ItemFieldValue(input: {
-            projectId: $project
-            itemId: $item
-            fieldId: $status_field
-            value: {
-              singleSelectOptionId: $status_value
-              }
-          }) {
-            projectV2Item {
-              id
-              }
-          }
-}
-"""
-    
-
+            clientMutationId
+            }   
+    }
+    """
     response = requests.post(url, json={"query": query}, headers=headers)
     print (response)
 
     if response.status_code == 200:
         data = response.json()
-#        print (data)
+        print (data)
 #        issues = data["data"]["repository"]["projectV2"]["items"]["edges"]
         
 #        print (issues)
-        return issues
+#        return issues
     else:
         print("Failed to retrieve issues:", response.text)
         return None
