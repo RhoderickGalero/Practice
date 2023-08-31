@@ -1,7 +1,7 @@
 import requests
 
 # Replace with your GitHub Personal Access Token and repository details
-ACCESS_TOKEN = "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"
+ACCESS_TOKEN = "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"
 REPO_OWNER = "RhoderickGalero"
 REPO_NAME = "Practice"
 
@@ -45,7 +45,7 @@ def get_repository_issues():
 
     if response.status_code == 200:
         data = response.json()
-#        print (data)
+        print (data)
         issues = data["data"]["repository"]["projectV2"]["items"]["edges"]
         
         print (issues)
@@ -56,7 +56,7 @@ def get_repository_issues():
 
 if __name__ == "__main__":
     issues = get_repository_issues()
-
+'''
     for item in issues:
         assignees_edges = item['node']['content']['assignees']['edges']
         if assignees_edges:
@@ -65,3 +65,4 @@ if __name__ == "__main__":
 #            empty_assignees_node_ids.append(node_id)
 
 #print(empty_assignees_node_ids)
+'''
