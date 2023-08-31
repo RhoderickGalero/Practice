@@ -45,7 +45,7 @@ def get_repository_issues():
 
     if response.status_code == 200:
         data = response.json()
-        print (data)
+#        print (data)
         issues = data["data"]["repository"]["projectV2"]["items"]["edges"]
         
         print (issues)
@@ -65,4 +65,3 @@ if __name__ == "__main__":
 #            empty_assignees_node_ids.append(node_id)
 
 #print(empty_assignees_node_ids)
-'''
