@@ -12,5 +12,5 @@ jobs:
 
       - name: Print Hello World
         run: |
-          echo "Hello, World!"
+          echo "Hello, World!!"
           gh --version

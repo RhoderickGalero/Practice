@@ -1,0 +1,31 @@
+name: Print In Progress World
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  In_Progress_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Print In Progress
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          query='{
+           viewer {
+             organization(login:"RhoderickGalero") {
+               id
+              }
+              projectV2(number:6) {
+               id 
+                }
+              }
+            }'
+          response=$(gh api graphql -H "X-Github-Next-Global-ID: 1" -F query="$query" | jq '.')
+          echo "$response"
