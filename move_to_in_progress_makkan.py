@@ -19,7 +19,7 @@ def move_to_in_progress(issue_id):
 def run_cmd(cmd):
     print('Running cmd "{0}"'.format(cmd))
     result = subprocess.run(cmd, stdout=subprocess.PIPE, shell=True, text=True)
-    out, err = result.stdout.strip(), result.stderr.strip()
+    out, err = result.stdout, result.stderr
     print("Out: {0}".format(out))
     print("Err: {0}".format(err))
     return out
