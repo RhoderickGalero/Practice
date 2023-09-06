@@ -16,4 +16,4 @@ jobs:
         run: |
           echo "Hello, World!!"
           gh --version
-          gh project item-list --owner RhoderickGalero --format json
+          gh project item-list --owner RhoderickGalero 6 --format json
