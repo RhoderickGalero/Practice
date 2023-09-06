@@ -22,6 +22,6 @@ jobs:
           
       - name: Move Issues to In Progress
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ISSUE_NR: ${{ github.event.issue.number }}
         run: python move_to_in_progress_makkan.py
