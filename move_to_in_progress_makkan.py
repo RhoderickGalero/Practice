@@ -1,9 +1,12 @@
-import os
 import subprocess
-import json
 
 
-def list_project():
+def list_projects():
+    cmd = 'gh project list --owner RhoderickGalero'
+    return run_cmd(cmd)
+
+
+def list_items():
     cmd = 'gh project item-list 6 --owner RhoderickGalero'
     return run_cmd(cmd)
 
@@ -23,20 +26,21 @@ def print_auth_info():
     print(run_cmd('gh auth status'))
 
 
-def print_envs():
-    for name, value in os.environ.items():
-        print("{0}: {1}".format(name, value))
+def print_gh_version():
+    print(run_cmd('gh version'))
 
 
 def main():
+    print_gh_version()
     print_auth_info()
-    project_items = list_project()
-    print("Project items:")
-    print(project_items)
-    issue_nr = os.getenv("ISSUE_NR")
+    projects = list_projects()
+    print("Projects: {0}".format(projects))
+    project_items = list_items()
+    print("Project items: {0}".format(project_items))
+    #issue_nr = os.getenv("ISSUE_NR")
     #TODO get issue_id from issue_nr
-    move_to_in_progress(issue_nr)
-    print(f"Moved Issue #{issue_nr} to 'InProgress'")
+    #move_to_in_progress(issue_nr)
+    #print(f"Moved Issue #{issue_nr} to 'InProgress'")
 
 
 if __name__ == "__main__":
