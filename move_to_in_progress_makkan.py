@@ -13,21 +13,24 @@ def list_items():
 
 def move_to_in_progress(issue_id):
     cmd = 'gh project item-edit --id {0} --field-id "PVTSSF_lAHOBbg8Ns4AT02azgMqiD8" --project-id PVT_kwHOBbg8Ns4AT02a --single-select-option-id "47fc9ee4"'.format(issue_id)
-    print(run_cmd(cmd))
+    return run_cmd(cmd)
     
 
 def run_cmd(cmd):
     print('Running cmd "{0}"'.format(cmd))
     result = subprocess.run(cmd, stdout=subprocess.PIPE, shell=True, text=True)
-    return result.stdout.strip()
+    out, err = result.stdout.strip(), result.stderr.strip()
+    print("Out: {0}".format(out))
+    print("Err: {0}".format(err))
+    return out
 
 
 def print_auth_info():
-    print(run_cmd('gh auth status'))
+    run_cmd('gh auth status')
 
 
 def print_gh_version():
-    print(run_cmd('gh version'))
+    run_cmd('gh version')
 
 
 def main():
