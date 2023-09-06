@@ -1,9 +1,6 @@
 import subprocess
-
-
-def list_projects():
-    cmd = 'gh project list --owner RhoderickGalero'
-    return run_cmd(cmd)
+import json
+import os
 
 
 def list_items():
@@ -20,30 +17,20 @@ def run_cmd(cmd):
     print('Running cmd "{0}"'.format(cmd))
     result = subprocess.run(cmd, stdout=subprocess.PIPE, shell=True, text=True)
     out, err = result.stdout, result.stderr
+    # For debugging
     #print("Out: {0}".format(out))
     #print("Err: {0}".format(err))
     return out
 
 
-def print_auth_info():
-    run_cmd('gh auth status')
-
-
-def print_gh_version():
-    run_cmd('gh version')
-
-
 def main():
-    print_gh_version()
-    print_auth_info()
-    projects = list_projects()
-    #print("Projects: {0}".format(projects))
-    project_items = list_items()
-    print("Project items: {0}".format(project_items))
-    #issue_nr = os.getenv("ISSUE_NR")
-    #TODO get issue_id from issue_nr
-    #move_to_in_progress(issue_nr)
-    #print(f"Moved Issue #{issue_nr} to 'InProgress'")
+    issue_nr = int(os.getenv("ISSUE_NR"))
+    project_items = json.loads(list_items())
+    for item in project_items["items"]:
+        if item['content']['type'] == "Issue" and item['content']['number'] == issue_nr:
+            move_to_in_progress(item['id'])
+            print(f"Moved Issue #{issue_nr} to 'InProgress'")
+            break
 
 
 if __name__ == "__main__":
