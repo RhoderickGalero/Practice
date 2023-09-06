@@ -19,12 +19,17 @@ def run_cmd(cmd):
     return result.stdout.strip()
 
 
+def print_auth_info():
+    print(run_cmd('gh auth status'))
+
+
 def print_envs():
     for name, value in os.environ.items():
         print("{0}: {1}".format(name, value))
 
 
 def main():
+    print_auth_info()
     project_items = list_project()
     print("Project items:")
     print(project_items)
