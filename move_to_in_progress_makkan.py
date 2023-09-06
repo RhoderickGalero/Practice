@@ -7,7 +7,7 @@ def list_projects():
 
 
 def list_items():
-    cmd = 'gh project item-list 6 --owner RhoderickGalero'
+    cmd = 'gh project item-list 6 --owner RhoderickGalero --format json'
     return run_cmd(cmd)
 
 
@@ -20,8 +20,8 @@ def run_cmd(cmd):
     print('Running cmd "{0}"'.format(cmd))
     result = subprocess.run(cmd, stdout=subprocess.PIPE, shell=True, text=True)
     out, err = result.stdout, result.stderr
-    print("Out: {0}".format(out))
-    print("Err: {0}".format(err))
+    #print("Out: {0}".format(out))
+    #print("Err: {0}".format(err))
     return out
 
 
@@ -37,7 +37,7 @@ def main():
     print_gh_version()
     print_auth_info()
     projects = list_projects()
-    print("Projects: {0}".format(projects))
+    #print("Projects: {0}".format(projects))
     project_items = list_items()
     print("Project items: {0}".format(project_items))
     #issue_nr = os.getenv("ISSUE_NR")
