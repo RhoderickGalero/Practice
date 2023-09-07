@@ -7,7 +7,6 @@ on:
     types:
       - assigned
 
-on:
   workflow_call:
   
 jobs:
