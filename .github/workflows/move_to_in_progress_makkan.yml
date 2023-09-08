@@ -6,6 +6,8 @@ on:
   issues:
     types:
       - assigned
+      
+  workflow_call:
 
 jobs:
   move_to_in_progress:
