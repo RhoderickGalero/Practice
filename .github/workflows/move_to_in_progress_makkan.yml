@@ -9,6 +9,9 @@ on:
       
   workflow_call:
 
+env:
+  repo: "Practice"
+
 jobs:
   move_to_in_progress:
     runs-on: ubuntu-latest
@@ -26,5 +29,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ISSUE_NR: ${{ github.event.issue.number }}
-          repo: "Practice"
+          path: ${{ env.repo }}
         run: python ${{ env.repo }}/move_to_in_progress_makkan.py
