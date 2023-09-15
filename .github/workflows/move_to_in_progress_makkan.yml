@@ -26,4 +26,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ISSUE_NR: ${{ github.event.issue.number }}
-        run: python RhoderickGalero/Practice/move_to_in_progress_makkan.py
+          repo: "Practice"
+        run: python ${{ env.repo }}/move_to_in_progress_makkan.py
