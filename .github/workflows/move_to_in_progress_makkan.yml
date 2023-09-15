@@ -22,11 +22,11 @@ jobs:
         with:
           repository: ${{ github.event.repository.owner.login}}/Practice
           ref: main
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           path: ${{ env.repo }}
 
       - name: Do something
         env: 
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ISSUE_NR: ${{ github.event.issue.number }}
         run: |
           python ${{ env.repo }}/move_to_in_progress_makkan.py
