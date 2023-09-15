@@ -19,10 +19,11 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-          
-      - name: Move Issues to In Progress
-        env:
+        with:
+          repository: ${{ github.event.repository.owner.login}}//workflows
+          ref: master
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ISSUE_NR: ${{ github.event.issue.number }}
           path: ${{ env.repo }}
-        run: python ${{ env.repo }}/move_to_in_progress_makkan.py
+        run: |
+          python ${{ env.repo }}/move_to_in_progress_makkan.py
