@@ -25,5 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ISSUE_NR: ${{ github.event.issue.number }}
           path: ${{ env.repo }}
+
+      - name: Do something  
         run: |
           python ${{ env.repo }}/move_to_in_progress_makkan.py
