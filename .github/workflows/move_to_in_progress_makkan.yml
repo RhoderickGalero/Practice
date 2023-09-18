@@ -6,6 +6,11 @@ on:
   issues:
     types:
       - assigned
+      
+  workflow_call:
+
+env:
+  repo: "Practice"
 
 jobs:
   move_to_in_progress:
@@ -14,14 +19,14 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-        
-      - name: Set up Python
-        uses: actions/setup-python@v3
         with:
-          python-version: 3.x
-          
-      - name: Move Issues to In Progress
-        env:
+          repository: ${{ github.event.repository.owner.login}}/Practice
+          ref: main
+          path: ${{ env.repo }}
+
+      - name: Do something
+        env: 
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           ISSUE_NR: ${{ github.event.issue.number }}
-        run: python move_to_in_progress_makkan.py
+        run: |
+          python ${{ env.repo }}/move_to_in_progress_makkan.py
