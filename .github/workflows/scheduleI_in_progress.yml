@@ -4,7 +4,7 @@ permissions: write-all
 
 on:
   schedule:
-    - cron: * * * * *
+    - cron: "* * * * *"
 
 jobs:
   move_to_in_progress:
