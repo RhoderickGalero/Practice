@@ -30,7 +30,7 @@ def main():
     for item in project_items["items"]:
         if item['content']['type'] == "Issue" and item['status'] == "Todo" and item['assignees'] is not None:
             #move_to_in_progress(item['id'])
-            print(f"Moved Issue (item['id'] to 'InProgress'")
+            print(f"Moved Issue {item['id']} to 'InProgress'")
             break
 
 
