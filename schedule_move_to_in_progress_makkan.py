@@ -31,7 +31,7 @@ def main():
         if item['content']['type'] == "Issue" and item['status'] == "Todo" and item['assignees'] is not None:
             #move_to_in_progress(item['id'])
             print(f"Moved Issue {item['id']} to 'InProgress'\n")
-            break
+            #break
 
 
 if __name__ == "__main__":
